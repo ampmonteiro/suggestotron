@@ -4,12 +4,17 @@
 class TopicData
 {
     protected $connection = null;
-    protected $host   = '######'; // localhost or ip address if you are using docker
+    protected $host   = '172.17.0.3'; // localhost or ip address if you are using docker
     protected $dbname = 'suggestron';
-    protected $user   = '###'; // if you used docker then put dev or root otherwise
-    protected $pwd    = '####'; // password defined on container or on the tool
+    protected $user   = 'root'; // if you used docker then put dev or root otherwise
+    protected $pwd    = 'secret'; // password defined on container or on the tool
 
-    public function connect()
+    public function __construct()
+    {
+        $this->connect();
+    }
+
+    private function connect()
     {
         $this->connection = new PDO(
             "mysql:host={$this->host};dbname={$this->dbname}",
@@ -24,5 +29,24 @@ class TopicData
         $query->execute();
 
         return $query;
+    }
+
+    public function create($data)
+    {
+        $sql = "INSERT INTO topics (
+                                title,
+                                description
+                            ) 
+                VALUES (
+                        :title,
+                        :description
+                        )";
+
+        $query = $this->connection->prepare($sql);
+
+        $query->execute([
+            ':title'       => $data['title'],
+            ':description' => $data['description']
+        ]);
     }
 }
