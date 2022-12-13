@@ -23,7 +23,8 @@ function h($val)
     </p>
 
     <p>
-        <a href="/edit.php/?id=<?= $item['id'] ?>"> Edit</a>
+        <a href="/edit.php/?id=<?= $item['id'] ?>"> Edit</a> ||
+        <a href="/delete.php/?id=<?= $item['id'] ?>"> Delete</a>
     </p>
 
 <?php endforeach; ?>
