@@ -4,7 +4,7 @@
 class TopicData
 {
     protected $connection = null;
-    protected $host   = '172.17.0.2'; // localhost or ip address if you are using docker
+    protected $host   = '172.17.0.3'; // localhost or ip address if you are using docker
     protected $dbname = 'suggestron';
     protected $user   = 'root'; // if you used docker then put dev or root otherwise
     protected $pwd    = 'secret'; // password defined on container or on the tool

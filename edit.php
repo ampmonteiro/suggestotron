@@ -5,7 +5,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_POST['id'])) {
 
     $data = new TopicData();
     if ($data->update($_POST)) {
-        header("Location: /index.php");
+        header("Location: /");
         exit;
     }
 
@@ -26,27 +26,6 @@ if (!$topic) {
     die("Topic not found!");
 }
 
-?>
+$title = "Edit Topic - {$topic['title']}";
 
-<h2>Edit Topic</h2>
-<form action="edit.php" method="POST">
-    <p>
-        <label>
-            Title: <input type="text" name="title" value="<?= $topic['title'] ?>">
-        </label>
-    </p>
-
-    <p>
-        <label>
-            Description:
-            <br>
-            <textarea name="description" cols="50" rows="20"><?= trim($topic['description']) ?>
-            </textarea>
-        </label>
-    </p>
-
-    <input type="hidden" name="id" value="<?= $topic['id']; ?>">
-
-    <button> Edit Topic </button>
-
-</form>
+require './views/edit.view.php';

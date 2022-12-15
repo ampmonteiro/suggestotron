@@ -11,20 +11,6 @@ function h($val)
     return htmlspecialchars($val);
 }
 
-?>
+$title = 'List of Topics';
 
-<?php foreach ($result as $item) : ?>
-    <h3>
-        <?= h($item['title']) ?>
-        (ID: <?= $item['id'] ?>)
-    </h3>
-    <p>
-        <?= h($item['description']) ?>
-    </p>
-
-    <p>
-        <a href="/edit.php/?id=<?= $item['id'] ?>"> Edit</a> ||
-        <a href="/delete.php/?id=<?= $item['id'] ?>"> Delete</a>
-    </p>
-
-<?php endforeach; ?>
+require './views/index.view.php';
