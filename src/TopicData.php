@@ -2,23 +2,35 @@
 
 namespace App;
 
+use App\Core\Config;
+
 class TopicData
 {
     protected $connection = null;
-    protected $host   = '172.17.0.3'; // localhost or ip address if you are using docker
-    protected $dbname = 'suggestron';
-    protected $user   = 'root'; // if you used docker then put dev or root otherwise
-    protected $pwd    = 'secret'; // password defined on container or on the tool
+    // localhost or ip address if you are using docker
+    // if you used docker then put dev or root otherwise
+    protected $user   = null;
+    // password defined on container or on the tool
+    protected $pwd    = null;
+    protected $dsn    = null;
 
     public function __construct()
     {
+        $config = Config::get('database');
+
+        $this->user = $config['username'];
+
+        $this->pwd = $config['password'];
+
+        $this->dsn = "{$config['drive']}:host={$config['hostname']};dbname={$config['dbname']}";
+
         $this->connect();
     }
 
     private function connect()
     {
         $this->connection = new \PDO(
-            "mysql:host={$this->host};dbname={$this->dbname}",
+            $this->dsn,
             $this->user,
             $this->pwd
         );
