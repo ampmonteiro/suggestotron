@@ -1,5 +1,6 @@
 <?php
-require './src/TopicData.php';
+
+require __DIR__ . '/vendor/autoload.php';
 
 $id = $_GET['id'] ?? null;
 

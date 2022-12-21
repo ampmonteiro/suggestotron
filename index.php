@@ -1,8 +1,6 @@
 <?php
 
-require './src/TopicData.php';
-
-require './src/Core/helpers.php';
+require __DIR__ . '/vendor/autoload.php';
 
 $topics = new \App\TopicData();
 

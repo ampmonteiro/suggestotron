@@ -7,8 +7,6 @@ function h($val)
 
 function render($view, $data = [], $layout = '')
 {
-    require 'ViewEngine.php';
-
     (new \App\Core\ViewEngine($view))
         ->render(
             $data,
@@ -26,7 +24,5 @@ function partial($name, $data = [])
 
 function view($currentView)
 {
-    require 'ViewEngine.php';
-
     return new \App\Core\ViewEngine($currentView);
 }

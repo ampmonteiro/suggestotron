@@ -1,6 +1,6 @@
 <?php
-require './src/TopicData.php';
-require './src/Core/helpers.php';
+
+require __DIR__ . '/vendor/autoload.php';
 
 if (isset($_POST) && sizeof($_POST) > 0) {
 
