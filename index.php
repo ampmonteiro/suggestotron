@@ -1,16 +1,23 @@
 <?php
 
-require 'TopicData.php';
+require './src/TopicData.php';
 
-$topics = new TopicData();
+require './src/Core/helpers.php';
+
+$topics = new \App\TopicData();
 
 $result = $topics->getAllTopics();
 
-function h($val)
-{
-    return htmlspecialchars($val);
-}
-
 $title = 'List of Topics';
 
-require './views/index.view.php';
+// render(
+//     'index',
+//     compact('title', 'result'),
+//     'base'
+// );
+
+view('index')
+    ->render(
+        compact('title', 'result'),
+        'base'
+    );

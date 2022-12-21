@@ -1,5 +1,5 @@
 <?php
-require 'TopicData.php';
+require './src/TopicData.php';
 
 $id = $_GET['id'] ?? null;
 
@@ -7,7 +7,7 @@ if (!$id) {
     die("You did not pass in an ID.");
 }
 
-$data = new TopicData();
+$data = new \App\TopicData();
 $topic = $data->getTopic($id);
 
 // if not found returns false

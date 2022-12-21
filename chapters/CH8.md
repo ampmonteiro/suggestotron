@@ -122,7 +122,7 @@
 
   which will be something like this:
 
-  ![Index](/styled_index.png 'index styled')
+  ![Index](styled_index.png 'index styled')
 
 - Step 4:
 
@@ -174,7 +174,7 @@
 
   And will be something like:
 
-  ![form](/create-edit-form.png 'form styled')
+  ![form](create-edit-form.png 'form styled')
 
 ## Explanation
 

@@ -141,4 +141,4 @@
 - step 6:
   To see what this looks like, refresh the application in your browser!
 
-  ![PHP info](/index-result.png 'index result')
+  ![PHP info](index-result.png 'index result')

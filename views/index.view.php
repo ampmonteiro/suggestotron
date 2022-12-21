@@ -1,4 +1,3 @@
-<?php include './views/partials/header.php' ?>
 <main class="my-10 grid md:grid-cols-2 lg:grid-cols-3 auto-rows-max gap-3 mx-auto max-w-5xl">
     <?php foreach ($result as $item) : ?>
         <article class="flex flex-col justify-between h-52 max-w-sm gap-3 pt-4 px-12 bg-amber-300 text-black drop-shadow-2xl">
@@ -18,4 +17,3 @@
 
     <?php endforeach; ?>
 </main>
-<?php include './views/partials/footer.php' ?>

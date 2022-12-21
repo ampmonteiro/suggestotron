@@ -156,7 +156,7 @@ Let users change existing data.
 
   if you verify the `$topic` value, with `var_dump` function, you will see something lile:
 
-  ![PHP info](/row_topic.png 'var_dump topic')
+  ![edit topic](row_topic.png 'var_dump topic')
 
   At this point, you should be able to see your topic data in the edit form, but if you submit the form nothing will change (yet).
 

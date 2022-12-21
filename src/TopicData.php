@@ -1,5 +1,6 @@
 <?php
 
+namespace App;
 
 class TopicData
 {
@@ -16,7 +17,7 @@ class TopicData
 
     private function connect()
     {
-        $this->connection = new PDO(
+        $this->connection = new \PDO(
             "mysql:host={$this->host};dbname={$this->dbname}",
             $this->user,
             $this->pwd
@@ -61,7 +62,7 @@ class TopicData
 
         $query->execute([':id' => $id]);
 
-        return $query->fetch(PDO::FETCH_ASSOC);
+        return $query->fetch(\PDO::FETCH_ASSOC);
     }
 
     public function update($data)

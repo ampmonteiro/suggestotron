@@ -1,9 +1,10 @@
 <?php
-require 'TopicData.php';
+require './src/TopicData.php';
+require './src/Core/helpers.php';
 
 if (isset($_POST) && sizeof($_POST) > 0) {
 
-    $data = new TopicData();
+    $data = new \App\TopicData();
     $data->create($_POST);
 
     header("Location: /");
@@ -12,4 +13,8 @@ if (isset($_POST) && sizeof($_POST) > 0) {
 
 $title = 'New Topic';
 
-require './views/create.view.php';
+render(
+    'create',
+    compact('title'),
+    'base'
+);

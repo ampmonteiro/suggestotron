@@ -1,9 +1,10 @@
 <?php
-require 'TopicData.php';
+require './src/TopicData.php';
+require './src/Core/helpers.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_POST['id'])) {
 
-    $data = new TopicData();
+    $data = new \App\TopicData();
     if ($data->update($_POST)) {
         header("Location: /");
         exit;
@@ -18,7 +19,7 @@ if (!$id) {
     die("You did not pass in an ID.");
 }
 
-$data = new TopicData();
+$data = new \App\TopicData();
 $topic = $data->getTopic($_GET['id']);
 
 // if not found returns false
@@ -28,4 +29,8 @@ if (!$topic) {
 
 $title = "Edit Topic - {$topic['title']}";
 
-require './views/edit.view.php';
+render(
+    'edit',
+    compact('title', 'topic'),
+    'base'
+);
