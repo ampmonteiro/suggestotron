@@ -18,7 +18,7 @@
             </a>
         </h1>
         <p class="text-white">
-            <a class="p-3 rounded-md font-bold text-gray-50 bg-blue-600 hover:bg-blue-800" href="/create.php">Create</a>
+            <a class="p-3 rounded-md font-bold text-gray-50 bg-blue-600 hover:bg-blue-800" href="/create">Create</a>
         </p>
     </header>
 

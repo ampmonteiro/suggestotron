@@ -1,6 +1,6 @@
 <?php
 
-require __DIR__ . '/vendor/autoload.php';
+require dirname(__DIR__) . '/vendor/autoload.php';
 
 $id = $_GET['id'] ?? null;
 
@@ -17,7 +17,7 @@ if (!$topic) {
 }
 
 if ($data->delete($topic['id'])) {
-    header("Location: /index.php");
+    header("Location: /");
     exit;
 }
 
