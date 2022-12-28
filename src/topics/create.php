@@ -1,7 +1,5 @@
 <?php
 
-require dirname(__DIR__) . '/vendor/autoload.php';
-
 if (isset($_POST) && sizeof($_POST) > 0) {
 
     $data = new \App\TopicData();

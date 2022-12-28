@@ -2,20 +2,18 @@
 
 require __DIR__ . '/vendor/autoload.php';
 
-$topics = new \App\TopicData();
+use App\Core\Router;
 
-$result = $topics->getAllTopics();
+$route = explode('?', $_SERVER['REQUEST_URI'])[0] ?? '';
 
-$title = 'List of Topics';
+if (empty($route) || $route === '/') {
+    $route = 'index';
+}
 
-// render(
-//     'index',
-//     compact('title', 'result'),
-//     'base'
-// );
+$route = trim(str_replace('/', '', $route));
 
-view('index')
-    ->render(
-        compact('title', 'result'),
-        'base'
-    );
+// $router = new  Router;
+// $router->start($route);
+// or, since call only one method
+
+(new Router)->start($route);
