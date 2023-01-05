@@ -2,17 +2,33 @@
 
 namespace App\Core;
 
+use App\Controllers\Topics;
+
 class Router
 {
-    public function start($route)
+    public function start($currentURI)
     {
-        $path = realpath("./src/topics/{$route}.php");
+        $route = $this->getRoute($currentURI);
 
-        if (file_exists($path)) {
-            require $path;
-            exit;
+        $controller = new Topics();
+
+        $method = [$controller, $route];
+
+        if (!is_callable($method)) {
+            die('Not FOUND');
         }
 
-        die('Not FOUND');
+        return $method();
+    }
+
+    protected function getRoute($uri)
+    {
+        $route = explode('?', $uri)[0] ?? '';
+
+        if (empty($route) || $route === '/') {
+            $route = 'index';
+        }
+
+        return trim(str_replace('/', '', $route));
     }
 }
