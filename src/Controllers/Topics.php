@@ -44,10 +44,10 @@ class Topics
         );
     }
 
-    public function edit()
+    public function edit($params)
     {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_POST['id'])) {
 
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($params['id'])) {
 
             if ($this->data->update($_POST)) {
                 header("Location: /");
@@ -57,13 +57,13 @@ class Topics
             die("An error occurred");
         }
 
-        $id = $_GET['id'] ?? null;
+        $id = $params['id'] ?? null;
 
         if (!$id) {
             die("You did not pass in an ID.");
         }
 
-        $topic = $this->data->getTopic($_GET['id']);
+        $topic = $this->data->getTopic($id);
 
         // if not found returns false
         if (!$topic) {
@@ -79,9 +79,9 @@ class Topics
         );
     }
 
-    public function delete()
+    public function delete($params)
     {
-        $id = $_GET['id'] ?? null;
+        $id = $params['id'] ?? null;
 
         if (!$id) {
             die("You did not pass in an ID.");
