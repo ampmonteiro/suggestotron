@@ -1,39 +1,16 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
-use App\Core\Config;
+use App\Core\DB;
 
-class TopicData
+class Topic
 {
     protected $connection = null;
-    // localhost or ip address if you are using docker
-    // if you used docker then put dev or root otherwise
-    protected $user   = null;
-    // password defined on container or on the tool
-    protected $pwd    = null;
-    protected $dsn    = null;
 
     public function __construct()
     {
-        $config = Config::get('database');
-
-        $this->user = $config['username'];
-
-        $this->pwd = $config['password'];
-
-        $this->dsn = "{$config['drive']}:host={$config['hostname']};dbname={$config['dbname']}";
-
-        $this->connect();
-    }
-
-    private function connect()
-    {
-        $this->connection = new \PDO(
-            $this->dsn,
-            $this->user,
-            $this->pwd
-        );
+        $this->connection = DB::getInstance();
     }
 
     public function getAllTopics()

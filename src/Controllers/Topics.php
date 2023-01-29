@@ -8,7 +8,7 @@ class Topics
 
     public function __construct()
     {
-        $this->data = new \App\TopicData();
+        $this->data = new \App\Models\Topic();
     }
 
     public function index()
