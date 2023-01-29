@@ -5,7 +5,7 @@
                 <?= h($item['title']) ?>
                 (ID: <?= $item['id'] ?>)
             </h3>
-            <p>
+            <p class="truncate">
                 <?= h($item['description']) ?>
             </p>
 
