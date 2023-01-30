@@ -13,9 +13,14 @@ class Topic
         $this->connection = DB::getInstance();
     }
 
-    public function getAllTopics()
+    public function all()
     {
-        $query = $this->connection->prepare("SELECT * FROM topics");
+        $sql = "SELECT  T.*,
+                        V.count
+                FROM topics T
+                INNER JOIN votes V ON  V.topic_id = T.id";
+
+        $query = $this->connection->prepare($sql);
         $query->execute();
 
         return $query;
@@ -38,9 +43,13 @@ class Topic
             ':title'       => $data['title'],
             ':description' => $data['description']
         ]);
+
+        $lastId = $this->connection->lastInsertId();
+
+        (new Vote())->create($lastId);
     }
 
-    public function getTopic($id)
+    public function find($id)
     {
         $sql = "SELECT * 
                 FROM topics 
@@ -82,8 +91,14 @@ class Topic
             "
         );
 
-        return $query->execute([
+        $rs =  $query->execute([
             ':id' => $id,
         ]);
+
+        if (!$rs) {
+            return false;
+        }
+
+        return (new Vote())->delete($id);
     }
 }

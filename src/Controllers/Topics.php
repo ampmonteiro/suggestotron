@@ -4,17 +4,16 @@ namespace App\Controllers;
 
 class Topics
 {
-    protected $data;
+    protected $model;
 
     public function __construct()
     {
-        $this->data = new \App\Models\Topic();
+        $this->model = new \App\Models\Topic();
     }
 
     public function index()
     {
-
-        $result = $this->data->getAllTopics();
+        $result = $this->model->all();
 
         $title = 'List of Topics';
 
@@ -29,7 +28,7 @@ class Topics
     {
         if (isset($_POST) && sizeof($_POST) > 0) {
 
-            $this->data->create($_POST);
+            $this->model->create($_POST);
 
             header("Location: /");
             exit;
@@ -49,7 +48,7 @@ class Topics
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($params['id'])) {
 
-            if ($this->data->update($_POST)) {
+            if ($this->model->update($_POST)) {
                 header("Location: /");
                 exit;
             }
@@ -63,7 +62,7 @@ class Topics
             die("You did not pass in an ID.");
         }
 
-        $topic = $this->data->getTopic($id);
+        $topic = $this->model->find($id);
 
         // if not found returns false
         if (!$topic) {
@@ -87,14 +86,14 @@ class Topics
             die("You did not pass in an ID.");
         }
 
-        $topic = $this->data->getTopic($id);
+        $topic = $this->model->find($id);
 
         // if not found returns false
         if (!$topic) {
             die("Topic not found!");
         }
 
-        if ($this->data->delete($topic['id'])) {
+        if ($this->model->delete($topic['id'])) {
             header("Location: /");
             exit;
         }
