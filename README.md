@@ -42,6 +42,14 @@
 - PHP: 8.1
 - DB: MySQL 8
 
+## CSS framework
+
+- Tailwind css
+
+# one of the forks from of original ( with original code)
+
+https://github.com/neoln/suggestotron
+
 ## Notes
 
 - to run this code DOCKER is not required, with this tools would be enough: XAMP, WAMP, MAMP, etc.
@@ -49,3 +57,11 @@
 - if you are using MySQL as simple container, **don't forget to verify the ip address**
 
 ## Images:
+
+original:
+
+![Final version - original](/chapters/original_sugestron.png 'UI from original project')
+
+Improved:
+
+![Final version - Improved](/chapters/improved_final_ch17.png 'UI Improved with Tailwind')
