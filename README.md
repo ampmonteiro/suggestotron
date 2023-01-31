@@ -1,4 +1,4 @@
-# Suggestron project in PHP ( you are in Lastest Chapter)
+# Suggestron project in PHP (Last chapter 17)
 
 - from the course / tutorial: **PHPBridge: Intro To PHP**
 - original web page is not available, only cached one
