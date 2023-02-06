@@ -12,7 +12,7 @@
 - Using Composer tool for autoloading internal dependencies
 - Using Docker to create the development environment
 - To better developement it is taked advantages of this two wonderfull vscode extensions:
-  - [Docker](hhttps://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-docker) (By Microsoft): to manage docker containers in vs code
+  - [Docker](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-docker) (By Microsoft): to manage docker containers in vs code
   - [Dev Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers) (By Microsoft): to use vscode inside of the container.
 
 ## Editor and Recommend extensions (Beside mention on goals section)
