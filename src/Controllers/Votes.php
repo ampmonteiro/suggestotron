@@ -13,14 +13,15 @@ class Votes
         $this->model = new Vote();
     }
 
-    public function update($params)
+    public function update()
     {
-        if (empty($params['id'])) {
-            echo "No topic id specified!";
-            exit;
+        $id = $_POST['id'];
+
+        if (empty($id)) {
+            die("No topic id specified!");
         }
 
-        $this->model->update($params['id']);
+        $this->model->update($id);
 
         header("Location: /");
     }

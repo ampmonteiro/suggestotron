@@ -26,61 +26,77 @@ class Topics
 
     public function create()
     {
-        if (isset($_POST) && sizeof($_POST) > 0) {
+        $error = [];
+        $old = [];
 
-            $this->model->create($_POST);
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-            header("Location: /");
-            exit;
+            $error = $this->validate($_POST);
+
+            if (empty($error)) {
+                $this->model->create($_POST);
+
+                header("Location: /");
+                exit;
+            }
+
+            $old = $_POST;
         }
 
         $title = 'New Topic';
 
         render(
             'create',
-            compact('title'),
+            compact('title', 'error', 'old'),
             'base'
         );
     }
 
     public function edit($params)
     {
+        $error = [];
+        $old = [];
+
+        $title = "Edit Topic";
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($params['id'])) {
 
-            if ($this->model->update($_POST)) {
+            $error = $this->validate($_POST);
+
+            if (empty($error) && $this->model->update($_POST)) {
                 header("Location: /");
                 exit;
             }
 
-            die("An error occurred");
+            if (!empty($error)) {
+
+                $old = $_POST;
+            }
         }
 
-        $id = $params['id'] ?? null;
+        $id = $old['id'] ?? $params['id'] ?? null;
 
         if (!$id) {
             die("You did not pass in an ID.");
         }
 
-        $topic = $this->model->find($id);
+        $data = $this->model->find($id);
 
         // if not found returns false
-        if (!$topic) {
+        if (!$data) {
             die("Topic not found!");
         }
 
-        $title = "Edit Topic - {$topic['title']}";
-
         render(
             'edit',
-            compact('title', 'topic'),
+            compact('title', 'data', 'error', 'old'),
             'base'
         );
     }
 
-    public function delete($params)
+    public function delete()
     {
-        $id = $params['id'] ?? null;
+        $id = $_POST['id'] ?? null;
 
         if (!$id) {
             die("You did not pass in an ID.");
@@ -99,5 +115,20 @@ class Topics
         }
 
         die("An error occurred");
+    }
+
+    protected function validate($data)
+    {
+        $error = [];
+
+        if (empty($data['title'])) {
+            $error['title'] = 'It is required';
+        }
+
+        if (empty($data['description'])) {
+            $error['description'] = 'It is required';
+        }
+
+        return $error;
     }
 }

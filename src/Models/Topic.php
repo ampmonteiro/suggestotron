@@ -51,9 +51,11 @@ class Topic
 
     public function find($id)
     {
-        $sql = "SELECT * 
-                FROM topics 
-                WHERE id = :id 
+        $sql = "SELECT  T.*,
+                        V.count
+                FROM topics T
+                INNER JOIN votes V ON  V.topic_id = T.id
+                WHERE T.id = :id 
                 LIMIT 1";
 
         $query = $this->connection->prepare($sql);

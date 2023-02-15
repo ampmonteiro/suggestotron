@@ -9,16 +9,14 @@
                 <?= h($item['description']) ?>
             </p>
 
-            <p class="self-end flex gap-5 my-3 ">
-                <a class="py-3 px-5 rounded-md font-bold text-blue-50 bg-blue-500 hover:bg-stone-700" href="/vote/?id=<?= $item['id'] ?>">
-                    <strong>
-                        <?= $item['count'] ?? 0 ?>
-                    </strong>
+            <p class="my-3 flex gap-5 items-center justify-between">
+                <strong>
+                    Likes: <?= $item['count'] ?? 0 ?>
+                </strong>
+                <a class="p-3 rounded-md font-bold text-gray-50 bg-stone-500 hover:bg-stone-700" href="/edit?id=<?= $item['id'] ?>">
+                    Edit
                 </a>
-                <a class="p-3 rounded-md font-bold text-gray-50 bg-stone-500 hover:bg-stone-700" href="/edit/?id=<?= $item['id'] ?>"> Edit</a>
-                <a class="p-3 rounded-md font-bold text-gray-50 bg-rose-500 hover:bg-rose-700 " href="/delete/?id=<?= $item['id'] ?>"> Delete</a>
             </p>
         </article>
-
     <?php endforeach; ?>
 </main>
