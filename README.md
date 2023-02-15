@@ -64,4 +64,10 @@ original:
 
 Improved:
 
-![Final version - Improved](/chapters/improved_final_ch17.png 'UI Improved with Tailwind')
+- index / main page:
+
+![main page](/chapters/ch_18_index.png 'main page')
+
+- edit page:
+
+![edit page](/chapters/ch_18_edit.png 'edit page with likes and delete')
